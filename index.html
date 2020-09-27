@@ -28,6 +28,9 @@
 				background:none;
 				box-shadow:none;
 			}
+			.contentA{
+				height: 1020px;
+			}
 			.innerText{
 				width: 1100px;
 				height: 360px;
@@ -37,6 +40,36 @@
 				font-size: 48px;
 				color: #fff;
 				text-shadow: 1px 1px 2px #000, 2px 2px 2px #000, 3px 3px 3px #000, 4px 4px 4px #000;
+			}
+			.selectChange{
+				margin: 40px auto 30px;
+				text-align: center;
+				font-size: 28px;
+				color: #666;
+			}
+			.selectChange span{
+				margin: 0 20px;
+				cursor: pointer;
+			}
+			.selectChange span:hover{
+				color: #2D93CA;
+			}
+			.selectChange span.active{
+				color: #025393;
+			}
+			.videoList ul li.videoBox{
+				width: 800px;
+				float: none;
+				height: 634px;
+				margin: 35px auto;
+				display: none;
+			}
+			.videoList ul li.videoBox.active{
+				display: block;
+			}
+			.videoList ul li.videoBox a,.videoList ul li.videoBox a img{
+				width: 800px;
+				height: 634px;
 			}
 
 </style>
@@ -86,21 +119,29 @@
 				</div>
 				<div class="videoContent">
 
+					<div class="selectChange">
+						<span class="active" qs="0">简介视频</span>|<span qs="1">教学引导视频</span>
+					</div>
+
 					<div class="videoList">
 						<ul class="clearfix">
-							<li class="video-1">
+							<li class="videoBox active">
 								<a href="./1.mp4" class="vediobox" ><img
 									 src="./index_files/1.jpg"><span></span></a>
-								<p>教学引导视频</p>
 							</li>
-							<li class="video-2">
+							<li class="videoBox">
 								<a href="./2" class="vediobox" ><img
 									 src="./index_files/3.jpg"><span></span></a>
-								<p>简介视频</p>
 							</li>
 						</ul>
 					</div>
-
+					<script>
+						$('.selectChange span').click(function (){
+							var index=$(this).attr('qs')
+							$(this).addClass('active').siblings().removeClass('active')
+							$('.videoBox').eq(index).addClass('active').siblings().removeClass('active')
+						})
+					</script>
 				</div>
 			</div>
 
